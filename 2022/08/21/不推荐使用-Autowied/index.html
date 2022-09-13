@@ -4,9 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="服务器常用命令, Oceanus">
-    <meta name="description" content="一般情况下，网站（PHP后端）突然无法打开可以尝试重启服务1.服务器重启命令：reboot2.php-fpm重启命令：service php-fpm restart
-使用nginx的服务器，有时候网站配置后，出现ngnix报错可以先检查下网">
+    <meta name="keywords" content="不推荐使用@Autowied, Oceanus">
+    <meta name="description" content="为什么 Spring和IDEA 都不推荐使用 @Autowired 注解
+前言
+为什么推荐使用@Resource,不推荐使用@Autowired@Autowired, @Qualifier, @Resource, 三者有何区别
+前言请看下面">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +20,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>服务器常用命令 | Oceanus</title>
+    <title>不推荐使用@Autowied | Oceanus</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -310,12 +312,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">服务器常用命令</h1>
+                    <h1 class="description center-align post-title">不推荐使用@Autowied</h1>
                 </div>
             </div>
         </div>
@@ -431,8 +433,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Linux/">
-                                <span class="chip bg-color">Linux</span>
+                            <a href="/tags/Spring/">
+                                <span class="chip bg-color">Spring</span>
                             </a>
                         
                     </div>
@@ -447,7 +449,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-04-24
+                    2022-08-21
                 </div>
                 
 
@@ -468,61 +470,106 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="一般情况下，网站（PHP后端）突然无法打开可以尝试重启服务"><a href="#一般情况下，网站（PHP后端）突然无法打开可以尝试重启服务" class="headerlink" title="一般情况下，网站（PHP后端）突然无法打开可以尝试重启服务"></a>一般情况下，网站（PHP后端）突然无法打开可以尝试重启服务</h3><p>1.服务器重启命令：reboot<br>2.php-fpm重启命令：service php-fpm restart</p>
-<h3 id="使用nginx的服务器，有时候网站配置后，出现ngnix报错可以先检查下网站的Nginx配置文件是否出现错误"><a href="#使用nginx的服务器，有时候网站配置后，出现ngnix报错可以先检查下网站的Nginx配置文件是否出现错误" class="headerlink" title="使用nginx的服务器，有时候网站配置后，出现ngnix报错可以先检查下网站的Nginx配置文件是否出现错误"></a>使用nginx的服务器，有时候网站配置后，出现ngnix报错可以先检查下网站的Nginx配置文件是否出现错误</h3><p>1.检查nginx语法 : nginx -tc 目录&#x2F;配置文件.conf<br>例子：nginx -tc &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</p>
-<h3 id="文件解、压缩"><a href="#文件解、压缩" class="headerlink" title="文件解、压缩"></a>文件解、压缩</h3><p>1.压缩打包命令：tar -zcvf &#x2F;data&#x2F;wwwroot&#x2F;###.tar.gz 目标文件夹名<br>2.解压命令：tar -xzvf file.tar.gz<br>例子：<br>(将abc文件夹打包压缩为abc.tar.gz)：tar -zcvf &#x2F;data&#x2F;wwwroot&#x2F;abc.tar.gz abc<br>(将abc.tar.gz解压） tar -xzvf abc.tar.gz</p>
-<h3 id="服务器之间拷贝文件"><a href="#服务器之间拷贝文件" class="headerlink" title="服务器之间拷贝文件"></a>服务器之间拷贝文件</h3><p>1.将文件拷贝到另一台服务器：<br>scp &#x2F;data&#x2F;wwwroot&#x2F;666.tar.gz <a href="mailto:&#x72;&#x6f;&#111;&#x74;&#x40;&#x31;&#49;&#49;&#x2e;&#49;&#x31;&#x2e;&#x31;&#49;&#x2e;&#x31;&#x31;&#49;">&#x72;&#x6f;&#111;&#x74;&#x40;&#x31;&#49;&#49;&#x2e;&#49;&#x31;&#x2e;&#x31;&#49;&#x2e;&#x31;&#x31;&#49;</a>:&#x2F;data&#x2F;wwwroot&#x2F;<br>2.从另一台服务器拷贝文件：<br>scp <a href="mailto:&#x72;&#111;&#111;&#116;&#x40;&#x32;&#x32;&#50;&#46;&#50;&#x32;&#x2e;&#x32;&#x32;&#46;&#50;&#50;&#x32;">&#x72;&#111;&#111;&#116;&#x40;&#x32;&#x32;&#50;&#46;&#50;&#x32;&#x2e;&#x32;&#x32;&#46;&#50;&#50;&#x32;</a>:&#x2F;data&#x2F;wwwroot&#x2F;weixin.tar.gz &#x2F;data&#x2F;wwwroot</p>
-<h3 id="数据库导出（mysqldump命令）"><a href="#数据库导出（mysqldump命令）" class="headerlink" title="数据库导出（mysqldump命令）"></a>数据库导出（mysqldump命令）</h3><h4 id="导出整个数据库"><a href="#导出整个数据库" class="headerlink" title="导出整个数据库"></a>导出整个数据库</h4><p>mysqldump -u 用户名 -p 数据库名 &gt; 导出的文件名<br>mysqldump -u linuxde -p data &gt; 目录&#x2F;linuxde.sql</p>
-<h4 id="导出一个表"><a href="#导出一个表" class="headerlink" title="导出一个表"></a>导出一个表</h4><p>mysqldump -u 用户名 -p 数据库名 表名 &gt; 导出的文件名<br>mysqldump -u linuxde -p data users &gt; linuxde_users.sql</p>
-<p>基本命令格（[xxx]中的内容根据实际情况改动）</p>
-<p>mysqldump -u [username] -p -d [databaseName] [tableName] &gt;<br>[路径及导出的sql文件名];</p>
-<p>1、导出数据库dbname的表结构<br>mysqldump -u root -p -d dbname &gt;db.sql;</p>
-<p>2、导出数据库dbname所有表结构及表數據（不加-d）<br>mysqldump -u root -p dbname &gt;db.sql;</p>
-<p>3、导出数据库dbname某张表的结构<br>mysqldump -uroot -pdbpasswd -d dbname test&gt;db.sql;</p>
-<p>4、导出数据库dbname某张表(test)结构及表数据（不加-d）<br>mysqldump -u root -p dbname test&gt;db.sql;</p>
-<h3 id="关闭防火墙"><a href="#关闭防火墙" class="headerlink" title="关闭防火墙"></a>关闭防火墙</h3><p>centos从7开始默认用的是firewalld，这个是基于iptables的，虽然有iptables的核心，但是iptables的服务是没安装的。所以你只要停止firewalld服务即可：</p>
-<p>sudo systemctl stop firewalld.service &amp;&amp; sudo systemctl disable firewalld.service</p>
-<p>如果你要改用iptables的话，需要安装iptables服务：<br>sudo yum install iptables-services<br>sudo systemctl enable iptables &amp;&amp; sudo systemctl enable ip6tables<br>sudo systemctl start iptables &amp;&amp; sudo systemctl start ip6tables</p>
-<h3 id="搜索文件，查看文件内容"><a href="#搜索文件，查看文件内容" class="headerlink" title="搜索文件，查看文件内容"></a>搜索文件，查看文件内容</h3><p>find . -name ‘srm*’ 　　#表示当前目录下查找文件名开头是字符串‘srm’的文件</p>
-<p>grep -A 5 foo file 显示file文件里匹配foo字串那行以foo及后5行<br>grep -B 5 foo file 显示file文件里匹配foo字串那行以foo及前5行<br>grep -C 5 foo file 显示file文件里匹配foo字串那行以及上下5行</p>
-<p>1、查看最后1000行的数据<br>cat filename | tail -n 1000<br>2、查看1000到3000行的数据<br>cat filename | head -n 3000 | tail -n +1000<br>注：管道符的作用 | 将前面的结果作为后面结果的输出。<br>3、打印文件所有内容<br>cat filename<br>4、打印文件最后1000行的数据<br>tail -n 1000<br>5、打印文件第1000行开始以后的内容<br>tail -n +1000<br>6、打印前1000的内容<br>head -n 1000<br>7、显示1000到300行的数据<br>sed -n ‘1000,3000p’ filename</p>
-<h3 id="创建软连接（ln-s-命令）"><a href="#创建软连接（ln-s-命令）" class="headerlink" title="创建软连接（ln -s 命令）"></a>创建软连接（ln -s 命令）</h3><p>具体用法：ln -s 源文件 软连接的位置<br>例：安装maven后直接使用mvn会出现 -bash: mvn: command not found的错误，这就需要增加一个软连接：<br>ln -s &#x2F;home&#x2F;maven&#x2F;bin&#x2F;mvn &#x2F;usr&#x2F;bin&#x2F;mvn<br>执行完，即可使用mvn命令。</p>
-<h2 id="查看服务器硬件资源信息"><a href="#查看服务器硬件资源信息" class="headerlink" title="查看服务器硬件资源信息"></a>查看服务器硬件资源信息</h2><h3 id="内存：free-h"><a href="#内存：free-h" class="headerlink" title="内存：free -h"></a>内存：free -h</h3><p><img src="/2022/04/24/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/1650765357355.png" alt="1650765357355"></p>
-<h3 id="硬盘：df-h"><a href="#硬盘：df-h" class="headerlink" title="硬盘：df -h"></a>硬盘：df -h</h3><p><img src="/2022/04/24/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/1650765373449.png" alt="1650765373449"></p>
-<h3 id="负载：top（进入后-按Q键退出）-或者-w-（此处使用w）"><a href="#负载：top（进入后-按Q键退出）-或者-w-（此处使用w）" class="headerlink" title="负载：top（进入后 按Q键退出） 或者 w （此处使用w）"></a>负载：top（进入后 按<strong>Q键</strong>退出） 或者 w （此处使用w）</h3><p><img src="/2022/04/24/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/1650765489808.png" alt="1650765489808"></p>
-<p>load average 后的三个值表示最近一分钟、最近五分钟、最近15分钟的负载。若接近1，服务器就满负荷运载了。</p>
-<h3 id="查看cpu信息：cat-x2F-proc-x2F-cpuinfo"><a href="#查看cpu信息：cat-x2F-proc-x2F-cpuinfo" class="headerlink" title="查看cpu信息：cat &#x2F;proc&#x2F;cpuinfo"></a>查看cpu信息：cat &#x2F;proc&#x2F;cpuinfo</h3><p><img src="/2022/04/24/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/1650765598491.png" alt="1650765598491"></p>
-<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><p>1、cd                                    作用： 进入文件夹</p>
-<p>2、ps  -ef|grep   服务包名称     作用：查看服务的进程号以及判断该服务是否处于生存状态</p>
-<p>3、kill -9   xxxx     作用：杀死进程号为xxxx的进程。</p>
-<p>4、gedit      xxx                  作用：打开并编辑xxx文件</p>
-<p>5、vi  xxx                          作用：编辑xxx文件 </p>
-<p>6、vi配套命令，按住i，进入插入模式，编辑完成后按esc键退出编辑模式，:wq 回车保存，:q!强制退出不保存 。</p>
-<p>7、ls                                     作用：查看当前文件夹下的文件列表</p>
-<p>8、ls -l                  作用：查看当前文件夹下的文件列表以及相关信息比如创建时间、权限信息。</p>
-<p> 9、find    &#x2F;  -name  xxx        作用：从根目录开始查找名为xxx的文件或文件夹</p>
-<p>10、pwd               作用：查看当前所在目录</p>
-<p>11、whereis  xxx    作用：搜索xxx文件或者命令</p>
-<p>12、chmod  777  xxx     作用：是给xxx文件或者文件夹授予最高权限</p>
-<p>13、sudo su    作用：切换为超级管理员</p>
-<p>14、cat  xxx    作用：查看某个文件或者配置信息，经常用来查看日志</p>
-<p>15、tail xxx   作用：查看某个文件，默认最后十行</p>
-<p>16、apt  install  xxxx  作用：在线包管理安装命令,安装xxxx软件</p>
-<p>17、dpkg -i   xxxx     作用：安装离线本地包xxxx</p>
-<p>18、cp -r  原路径文件夹或文件      目的路径文件夹   作用：将文件夹或文件 复制到目的文件夹下</p>
-<p>19、tar zxvf xxxx.tar   作用：解压后缀为.tar的压缩包。（注：压缩命令较多，压缩包后缀不同使用的解压和压缩的命令也不相同）</p>
-<p>20、ip addr 或 ifconfig   作用：查看当前ip地址</p>
-<h2 id="后台启动Java项目"><a href="#后台启动Java项目" class="headerlink" title="后台启动Java项目"></a>后台启动Java项目</h2><h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup java -jar springboot-0.0.1-SNAPSHOT.jar &amp;</span><br></pre></td></tr></table></figure>
+                <p>为什么 Spring和IDEA 都不推荐使用 @Autowired 注解</p>
+<p>前言</p>
+<p>为什么推荐使用@Resource,不推荐使用@Autowired<br>@Autowired, @Qualifier, @Resource, 三者有何区别</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>请看下面几个问题</p>
+<p>Spring为什么不推荐使用@Autowired 注解?<br>为什么推荐使用@Resource 代替 @Autowired 注解?<br>如何快速使用构造注入代替 @Autowired ?<br>@Autowired, @Qualifier, @Resource, 三者有何区别?<br>下面, 我们带着以上问题去梳理和学习, 体会知识之间的关联性</p>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>做开发的同学可能都会发现, idea 在我们经常使用的@Autowired 注解上添加了警告<br>警告内容是: Field injection is not recommended, 译为: 不推荐使用属性注入</p>
+<p>我们点击右侧三个小点查看描述, 可以看到信息如下图</p>
+<p>原因详情描述: Inspection info: Spring Team recommends: “Always use constructor based dependency injection in your beans. Always use assertions for mandatory dependencies”.<br>译为: Spring 团队建议: 始终在您的 bean 中使用基于构造函数的依赖注入。始终对强制依赖项使用断言</p>
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>为什么 Spring 建议我们在Bean中使用构造注入呢?<br>想要回答这个问题, 我们需要了解 Spring的依赖注入(DI)方式<br>Spring常用的注入方式有: 简单类型注入, 集合类型注入, 域属性自动注入, 自动注入的类别, 空值注入, 构造注入<br>可以简化为: 属性注入, 构造方法注入, set 方法注入</p>
+<p>下面, 来用代码展示下三种方式注入</p>
+<h3 id="属性注入"><a href="#属性注入" class="headerlink" title="属性注入"></a>属性注入</h3><p>可以看到, 我们开发最常用的就是属性注入</p>
+<pre><code>@RestController
+public class AppointmentNumberConfigurationController &#123;
+@Autowired
+private AppointmentNumberConfigurationService numberConfigurationService;
+&#125;
+</code></pre>
+<h3 id="set-方法注入"><a href="#set-方法注入" class="headerlink" title="set 方法注入"></a>set 方法注入</h3><p>set 方法注入也会用到@Autowired注解，但使用方式与属性注入有所不同，<br>属性注入是用在成员变量上，而set 方法的时候，是用在成员变量的Setter函数上。</p>
+<pre><code>@RestController
+public class AppointmentNumberConfigurationController &#123;
 
-<p><img src="/2022/04/24/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/1650846711516.png" alt="1650846711516"></p>
-<h3 id="查看日志"><a href="#查看日志" class="headerlink" title="查看日志"></a>查看日志</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat nohup.out</span><br></pre></td></tr></table></figure>
+private AppointmentNumberConfigurationService numberConfigurationService;
 
-<p><img src="/2022/04/24/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/1650846949085.png" alt="1650846949085"></p>
-<h3 id="查看java启动情况"><a href="#查看java启动情况" class="headerlink" title="查看java启动情况"></a>查看java启动情况</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep java</span><br></pre></td></tr></table></figure>
+@Autowired
+public void setNumberConfigurationService(AppointmentNumberConfigurationService numberConfigurationService) &#123;
+    this.numberConfigurationService = numberConfigurationService;
+    &#125;
+</code></pre>
+<h3 id="构造方法注入"><a href="#构造方法注入" class="headerlink" title="构造方法注入"></a>构造方法注入</h3><p>Constructor Injection是构造器注入，是我们最为推荐的一种使用方式。<br>但是, 每次注入都按照这样的流程去构造注入的话, 会显得比较麻烦.<br>至于如何去简化这一步骤, 我们可以继续往下看.</p>
+<pre><code>@RestController
+public class AppointmentNumberConfigurationController &#123;
 
-<p><img src="/2022/04/24/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/1650848408672.png" alt="1650848408672"></p>
-<h3 id="关闭java"><a href="#关闭java" class="headerlink" title="关闭java"></a>关闭java</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill -9 19209</span><br></pre></td></tr></table></figure>
+final AppointmentNumberConfigurationService numberConfigurationService;
 
+public AppointmentNumberConfigurationController(AppointmentNumberConfigurationService numberConfigurationService) &#123;
+    this.numberConfigurationService = numberConfigurationService;
+&#125;
+&#125;
+</code></pre>
+<p>三种方式对比如下</p>
+<p>使用属性注入可能会出现的问题</p>
+<p><strong>基于属性注入的方式, 违背单一职责原则</strong><br>因为现在的业务一般都会使用很多依赖, 但拥有太多的依赖通常意味着承担更多的责任,而这显然违背了单一职责原则.<br>并且类和依赖容器强耦合，不能在容器外使用。</p>
+<p><strong>基于属性注入的方式, 容易导致Spring 初始化失败</strong><br>因为现在在Spring特别是Spring Boot使用中, 经常会因为初始化的时候, 由于属性在被注入前就引用而导致npe(空指针错误),<br>进而导致容器初始化失败(类似下面代码块). Java 在初始化一个类时，<br>是按照 静态变量或静态语句块 –&gt; 实例变量或初始化语句块 –&gt; 构造方法 -&gt; @Autowired 的顺序。<br>所以在执行这个类的构造方法时，person 对象尚未被注入，它的值还是 null。</p>
+<p><strong>通过@Autowired 注入, 又因为是 ByType 注入, 因此有可能会出现两个相同的类型bean</strong><br>如下代码快, 就会产生两个相同的Bean, 进而导致Spring 装配失败<br>&#x2F;&#x2F;2. 基于属性注入的方式, 容易导致Spring 初始化失败</p>
+<pre><code>@Autowired
+private Person person;
+
+private String company;
+
+public UserServiceImpl()&#123;
+    this.company = person.getCompany();
+&#125;
+
+//3. 通过@Autowired 注入, 又因为是 ByType 注入, 因此有可能会出现两个相同的类型bean
+public interface IUser &#123;
+    void say();
+&#125;
+
+@Service
+public class User1 implements IUser&#123;
+    @Override
+    public void say() &#123;
+    &#125;
+&#125;
+
+@Service
+public class User2 implements IUser&#123;
+    @Override
+    public void say() &#123;
+    &#125;
+&#125;
+
+@Service
+public class UserService &#123;
+@Autowired
+private IUser user;
+&#125; 
+</code></pre>
+<h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><p>如果一定要使用属性注入, 可以使用 @Resource 代替 @Autowired 注解<br>@Resource的作用相当于@Autowired，只不过@Autowired按照byType自动注入。<br>如果我们想使用按照名称byName来装配，可以结合@Qualifier注解一起使用。</p>
+<p>如果可能的话, 尽量使用构造注入<br>Lombok提供了一个注解@RequiredArgsConstructor, 可以方便我们快速进行构造注入, 例如:</p>
+<pre><code>@RestController
+@RequiredArgsConstructor
+public class AppointmentNumberConfigurationController &#123;
+    
+final AppointmentNumberConfigurationService numberConfigurationService;
+&#125;
+</code></pre>
+<p>同时需要注意：</p>
+<p>使用@RequiredArgsConstructor注解需要导入Lombok 包 或者安装lombok 插件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;lombok&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.18.16&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>必须声明的变量为final</p>
+<p>根据构造器注入的，相当于当容器调用带有一组参数的类构造函数时，基于构造函数的 DI 就完成了，<br>其中每个参数代表一个对其他类的依赖。基于构造方法为属性赋值，容器通过调用类的构造方法将其进行依赖注入</p>
+<p>思考<br>为什么推荐使用@Resource,不推荐使用@Autowired<br>通过对问题1 的梳理, 我们可以知道.<br>因为@Autowired 注解在Bean 注入的时候是基于ByType, 因此会由于注入两个相同类型的Bean导致装配失败</p>
+<p>@Resource的作用相当于@Autowired，只不过@Autowired按照byType自动注入。<br>如果我们想使用按照名称byName来装配，可以结合@Qualifier注解一起使用。</p>
+<p>@Resource装配顺序：<br>①如果同时指定了name和type，则从Spring上下文中找到唯一匹配的bean进行装配，找不到则抛出异常。<br>②如果指定了name，则从上下文中查找名称（id）匹配的bean进行装配，找不到则抛出异常。<br>③如果指定了type，则从上下文中找到类型匹配的唯一bean进行装配，找不到或是找到多个，都会抛出异常。<br>④如果既没有指定name，又没有指定type，则自动按照byName方式进行装配；如果没有匹配，则回退为一个原始类型进行匹配，如果匹配则自动装配。</p>
+<p>因此, 如果一定要使用属性注入, 可以使用 @Resource 代替 @Autowired 注解</p>
+<p>@Autowired, @Qualifier, @Resource, 三者有何区别<br>@Autowired: 通过byType 方式进行装配, 找不到或是找到多个，都会抛出异常。<br>@Qualifier: 如果想让@Autowired 注入的Bean进行 byName装配, 可以使用 @Qualifier 进行指定<br>@Resource :作用相当于@Autowired，只不过 @Resource 默认按照byName方式装配, 如果没有匹配, 则退回到 byType 方式进行装配</p>
 
                 
             </div>
@@ -549,7 +596,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://myoceanus.github.io/2022/04/24/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">https://myoceanus.github.io/2022/04/24/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</a>
+                    <a href="https://myoceanus.github.io/2022/08/21/%E4%B8%8D%E6%8E%A8%E8%8D%90%E4%BD%BF%E7%94%A8-Autowied/">https://myoceanus.github.io/2022/08/21/%E4%B8%8D%E6%8E%A8%E8%8D%90%E4%BD%BF%E7%94%A8-Autowied/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -587,8 +634,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Linux/">
-                                    <span class="chip bg-color">Linux</span>
+                                <a href="/tags/Spring/">
+                                    <span class="chip bg-color">Spring</span>
                                 </a>
                             
                         </div>
@@ -766,13 +813,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/04/24/Linux%E5%AE%89%E8%A3%85docker/">
+                <a href="/2022/08/21/Spring%E6%95%B4%E5%90%88Mybatis%E5%8E%9F%E7%90%86/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Linux安装docker">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="Spring整合Mybatis原理">
                         
-                        <span class="card-title">Linux安装docker</span>
+                        <span class="card-title">Spring整合Mybatis原理</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -783,7 +830,7 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-24
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-08-21
                         </span>
                         <span class="publish-author">
                             
@@ -796,8 +843,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Linux%E5%AE%89%E8%A3%85docker/">
-                        <span class="chip bg-color">Linux安装docker</span>
+                    <a href="/tags/Spring/">
+                        <span class="chip bg-color">Spring</span>
                     </a>
                     
                 </div>
@@ -811,13 +858,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/04/21/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%BC%E5%87%BA%E6%96%87%E4%BB%B6/">
+                <a href="/2022/07/16/%E6%95%B0%E6%8D%AE%E5%BA%93ACID/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="数据库导出文件">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="数据库ACID">
                         
-                        <span class="card-title">数据库导出文件</span>
+                        <span class="card-title">数据库ACID</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -828,7 +875,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-21
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-16
                             </span>
                         <span class="publish-author">
                             
@@ -841,8 +888,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/MySQL/">
-                        <span class="chip bg-color">MySQL</span>
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                        <span class="chip bg-color">数据库</span>
                     </a>
                     
                 </div>
