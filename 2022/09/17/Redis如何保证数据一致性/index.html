@@ -4,16 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="SpringMVC拦截器, Oceanus">
-    <meta name="description" content="SpringMVC之拦截器
-目录
-一、什么是拦截器？
-二、拦截器与过滤器
-三、应用场景
-四、拦截器入门案例
-五、拦截器方法说明
-六、用户登录权限控制
-一、什么是拦截器？SpringMVC的处理器拦截器,类似于Servlet开发中的过滤器Fi">
+    <meta name="keywords" content="Redis如何保证数据一致性, Oceanus">
+    <meta name="description" content="在项目中难免会使用到redis作为缓存，去减轻数据库的访问压力，但是涉及到数据更新时，如果redis和数据库的操作设计出现问题，就会导致redis缓存中和数据库中的数据不一致的情况。那么我们如何去保证缓存与数据库中数据一直呢？
+四种同步策略">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -25,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>SpringMVC拦截器 | Oceanus</title>
+    <title>Redis如何保证数据一致性 | Oceanus</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -317,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">SpringMVC拦截器</h1>
+                    <h1 class="description center-align post-title">Redis如何保证数据一致性</h1>
                 </div>
             </div>
         </div>
@@ -438,8 +431,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/SpringMVC/">
-                                <span class="chip bg-color">SpringMVC</span>
+                            <a href="/tags/redis/">
+                                <span class="chip bg-color">redis</span>
                             </a>
                         
                     </div>
@@ -454,7 +447,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-08-24
+                    2022-09-17
                 </div>
                 
 
@@ -475,186 +468,41 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>SpringMVC之拦截器</p>
-<p>目录</p>
-<p>一、什么是拦截器？</p>
-<p>二、拦截器与过滤器</p>
-<p>三、应用场景</p>
-<p>四、拦截器入门案例</p>
-<p>五、拦截器方法说明</p>
-<p>六、用户登录权限控制</p>
-<p>一、什么是拦截器？<br>SpringMVC的处理器拦截器,类似于Servlet开发中的过滤器Filter，用于对处理器进行预处理和后处理。 依赖于web框架，在实现上基于Java的反射机制，属于面向切面编程（AOP）的一种运用。由于拦截器是基于web框架的调用，因此可以使用Spring的依赖注入（DI）进行一些业务操作，同时一个拦截器实例在一个 controller生命周期之内可以多次调用。</p>
-<p>二、拦截器与过滤器<br>2.1 什么是过滤器（Filter）</p>
-<p>依赖于servlet容器。在实现上基于函数回调，可以对几乎所有请求进行过滤，但是缺点是一个过滤器实例，只能在容器初始化时调用一次。使用过滤器的目的是用来做一些过滤操作，比如：在过滤器中修改字符编码； 在过滤器中修改HttpServletRequest的一些参数，包括：过滤低俗文字、危险字符等。</p>
-<p>2.2什么是拦截器(interceptor)？</p>
-<p> 拦截器，在AOP（Aspect-Oriented Programming）中用于在某个方法或字段被访问之前，进行拦截然后在之前或之后加入某些操作。拦截是AOP的一种实现策略。</p>
-<pre><code>在 Webwork的中文文档的解释为——拦截器是动态拦截Action调用的对象。它提供了一种机制可以使开发者可以定义在一个action执行的前后执行的代码，也可以在一个action执行前阻止其执行。同时也是提供了一种可以提取action中可重用的部分的方式。
-</code></pre>
-<p>2.3拦截器链（多拦截器）</p>
-<pre><code>  拦截器链的概念：如果多个拦截器能够对相同的请求进行拦截，则多个拦截器会形成一个拦截器链，主要理解拦截器链中各个拦截器的执行顺序。拦截器链中多个拦截器的执行顺序，根拦截器的配置顺序有关，先配置的先执行。
-</code></pre>
-<p>2.3过滤器和拦截器的区别？</p>
-<p>过滤器(filter)：</p>
-<pre><code>1) filter属于Servlet技术，只要是web工程都可以使用
-2) filter主要对所有请求过滤
-3) filter的执行时机早于Interceptor
-</code></pre>
-<p> 拦截器(interceptor)</p>
-<pre><code>1) interceptor属于SpringMVC技术，必须要有SpringMVC环境才可以使用
-2) interceptor通常对处理器Controller进行拦截
-3) interceptor只能拦截dispatcherServlet处理的请求
-</code></pre>
-<p>三、应用场景<br>1）日志记录：记录请求信息的日志，以便进行信息监控、信息统计、计算PV（Page View）等。</p>
-<p> 2）权限检查：如登录检测，进入处理器检测是否登录，如果没有直接返回到登录页面；</p>
-<p> 3）性能监控：有时候系统在某段时间莫名其妙的慢，可以通过拦截器在进入处理器之前记录开始时间，在处理完后记录结束时间，从而得到该请求的处理时间（如果有反向代理，如apache可以自动记录）；</p>
-<p> 4）通用行为：读取cookie得到用户信息并将用户对象放入请求，从而方便后续流程使用，还有如提取Locale、Theme信息等，只要是多个Controller中的处理方法都需要的，我们就可以使用拦截器实现。</p>
-<p>四、拦截器入门案例<br>步骤：</p>
-<p>1、配置拦截器(在springmvc.xml中进行配置)</p>
-<p>2、创建拦截器类实现HandlerInterceptor接口(实现HandlerInterceptor接口，内部有相应的方法需要我们去实现)<br>3、测试拦截器的拦截效果</p>
-<p>4.1单个拦截器</p>
-<p>1)在SpringMVC核心配置文件中配置拦截器</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--配置拦截器--&gt;</span><br><span class="line">    &lt;mvc:interceptors&gt;</span><br><span class="line">        &lt;!--配置拦截器，多个拦截器时，顺序执行--&gt;</span><br><span class="line">        &lt;mvc:interceptor&gt;</span><br><span class="line">            &lt;!--要拦截的具体的方法--&gt;</span><br><span class="line">            &lt;mvc:mapping path=&quot;/*/text&quot;/&gt;</span><br><span class="line">            &lt;!--不去拦截的方法</span><br><span class="line">            &lt;mvc:exclude-mapping path=&quot;&quot;/&gt;</span><br><span class="line">            --&gt;</span><br><span class="line">            &lt;!--配置拦截器对象--&gt;</span><br><span class="line">            &lt;bean class=&quot;com.ftp.interceptor.IndexInterceptor1&quot;/&gt;</span><br><span class="line">        &lt;/mvc:interceptor&gt;</span><br><span class="line">    &lt;/mvc:interceptors&gt;</span><br></pre></td></tr></table></figure>
-
-<p>2.1）创建IndexController类</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@Controller</span><br><span class="line">public class IndexController &#123;</span><br><span class="line">    @RequestMapping(&quot;/&quot;)</span><br><span class="line">    public String toIndex()&#123;</span><br><span class="line">        //视图解析器=前缀+逻辑视图名+后缀=完整路径</span><br><span class="line">        //前缀：/WEB-INF/jsp/</span><br><span class="line">        //逻辑视图名：index</span><br><span class="line">        //后缀 .jsp</span><br><span class="line">        //完整路径=/WEB-INF/jsp/index.jsp</span><br><span class="line">        return &quot;index&quot;;//逻辑视图名</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<p>2.2)写一个前端页面，展示效果</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page contentType=&quot;text/html;charset=UTF-8&quot; language=&quot;java&quot; %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;h1&gt;Hello springmvc之拦截器入门案例&lt;/h1&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<p>2.3)创建拦截器类HelloInterceptor 实现HandlerInterceptor接口</p>
-<pre><code>public class HelloInterceptor implements HandlerInterceptor &#123;
-@Override
-public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception &#123;
-    System.out.println(&quot;【HelloInterceptor】preHandler...&quot;);
-    return true;
-&#125;
- 
-@Override
-public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception &#123;
-    System.out.println(&quot;【HelloInterceptor】postHandle....&quot;);
-&#125;
- 
-@Override
-public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception &#123;
-    System.out.println(&quot;【HelloInterceptor】afterCompletion..&quot;);
-&#125;
-</code></pre>
-<p>}</p>
-<p>3)运行IndexController测试结果如下</p>
-<p> 4.2拦截链示例</p>
-<p>1）在SpringMVC核心配置文件中配置多个拦截器</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--配置拦截器--&gt;</span><br><span class="line">   &lt;mvc:interceptors&gt;</span><br><span class="line">       &lt;!--配置拦截器，多个拦截器时，顺序执行--&gt;</span><br><span class="line">       &lt;mvc:interceptor&gt;</span><br><span class="line">           &lt;!--要拦截的具体的方法--&gt;</span><br><span class="line">           &lt;mvc:mapping path=&quot;/*/text&quot;/&gt;</span><br><span class="line">           &lt;!--不去拦截的方法</span><br><span class="line">           &lt;mvc:exclude-mapping path=&quot;&quot;/&gt;</span><br><span class="line">           --&gt;</span><br><span class="line">           &lt;!--配置拦截器对象--&gt;</span><br><span class="line">           &lt;bean class=&quot;com.ftp.interceptor.IndexInterceptor1&quot;/&gt;</span><br><span class="line">       &lt;/mvc:interceptor&gt;</span><br><span class="line">       &lt;mvc:interceptor&gt;</span><br><span class="line">           &lt;!--要拦截的具体的方法--&gt;</span><br><span class="line">           &lt;mvc:mapping path=&quot;/*/text&quot;/&gt;</span><br><span class="line">           &lt;!--不去拦截的方法</span><br><span class="line">           &lt;mvc:exclude-mapping path=&quot;&quot;/&gt;</span><br><span class="line">           --&gt;</span><br><span class="line">           &lt;!--配置拦截器对象--&gt;</span><br><span class="line">           &lt;bean class=&quot;com.ftp.interceptor.IndexInterceptor2&quot;/&gt;</span><br><span class="line">       &lt;/mvc:interceptor&gt;</span><br><span class="line">   &lt;/mvc:interceptors&gt;</span><br></pre></td></tr></table></figure>
-
-<p>4.2）创建一个拦截器类实现HandlerInterceptor接口</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class BookInterceptor implements HandlerInterceptor &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception &#123;</span><br><span class="line">        System.out.println(&quot;【BookInterceptor】preHandler。。。&quot;);</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<pre><code>@Override
-public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception &#123;
-    System.out.println(&quot;【BookInterceptor】postHandle。。。&quot;);
-&#125;
- 
-@Override
-public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception &#123;
-    System.out.println(&quot;【BookInterceptor】afterCompletion。。。&quot;);
-&#125;
-</code></pre>
-<p>}</p>
-<p>3）运行测试结果</p>
-<p>五、拦截器方法说明<br> preHandle方法<br>    作用：用于对拦截到的请求进行预处理，方法接收布尔(true,false)类型的返回值，返回true：放行，false：不放行。<br>    执行时机：在处理器方法执行前执行<br>    方法参数：<br>    1）request请求对象<br>    2）response响应对象<br>    3）handler拦截到的方法处理</p>
-<pre><code>postHandle方法
-作用：用于对拦截到的请求进行后处理，可以在方法中对模型数据和视图进行修改
-执行时机：在处理器的方法执行后，视图渲染之前
-方法参数：
-1）request请求对象
-2）response响应对象
-3）handler拦截到的处理器方法
-4）ModelAndView处理器方法返回的模型和视图对象，可以在方法中修改模型和视图
-
-afterCompletion方法
-作用：用于在整个流程完成之后进行最后的处理，如果请求流程中有异常，可以在方法中获取对象
-执行时机：视图渲染完成后(整个流程结束之后)
-方法参数：
-1）request请求参数
-2）response响应对象
-3）handler拦截到的处理器方法
-4）ex异常对象
-</code></pre>
-<p>六、用户登录权限控制<br>1、配置spring-mvc.xml</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;mvc:interceptor&gt;</span><br><span class="line">            &lt;mvc:mapping path=&quot;/**/&quot;/&gt;</span><br><span class="line">            &lt;bean class=&quot;com.zking.ssm.book.interceptor.LoginInterceptor&quot;/&gt;</span><br><span class="line">        &lt;/mvc:interceptor&gt;</span><br></pre></td></tr></table></figure>
-
-<p>2、创建LoginController</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">package com.zking.ssm.book.controller;</span><br><span class="line"></span><br><span class="line">import org.springframework.stereotype.Controller;</span><br><span class="line">import org.springframework.ui.Model;</span><br><span class="line">import org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"></span><br><span class="line">import javax.servlet.http.HttpSession;</span><br><span class="line"></span><br><span class="line">@Controller</span><br><span class="line">public class LoginController &#123;</span><br></pre></td></tr></table></figure>
-
-
-
-<pre><code>/**
- * 跳转到登录页面
- * @return
- */
-@RequestMapping(&quot;tologin&quot;)
-public String toLogin()&#123;
-    return &quot;login&quot;;
-&#125;
- 
-/**
- * 登录方法
- * @param username 账号
- * @param password 密码
- * @return
- */
-@RequestMapping(&quot;/userLogin&quot;)
-public String userLogin(String username, String password, HttpSession session, Model model)&#123;
-    if(&quot;admin&quot;.equals(username)|| password.equals(&quot;123&quot;))&#123;
-       session.setAttribute(&quot;username&quot;,username);
-        //这里的&quot;/&quot;是跳转的@RequestMapping配置的值
-        return &quot;redirect:/&quot;;
-    &#125;
- 
-    model.addAttribute(&quot;msg&quot;,&quot;账号或者密码错误&quot;);
-    return &quot;login&quot;;
-&#125;
-
-
-
-/**
- * 安全退出
- * @param session
- * @return
- */
-@RequestMapping(&quot;/userLogout&quot;)
-public String userLogout(HttpSession session)&#123;
-    //清空session
-    session.invalidate();
- 
-    return &quot;redirect:tologin&quot;;
-&#125;
-
-&#125;
-</code></pre>
-<p>LoginInterceptor</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public class LoginInterceptor implements HandlerInterceptor &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception &#123;</span><br><span class="line">        //获取请求路径</span><br><span class="line">        String url = request.getRequestURI();</span><br><span class="line">        System.out.println(url);</span><br><span class="line">        //判断是否是跳转登录页面的请求 放行</span><br><span class="line">        if(url.indexOf(&quot;/user/toLogin&quot;)&gt;0)</span><br><span class="line">            return true;</span><br><span class="line">        //判断是否是用户登录 放行</span><br><span class="line">        if(url.indexOf(&quot;/user/userLogin&quot;)&gt;0)</span><br><span class="line">            return true;</span><br><span class="line">        //获取session</span><br><span class="line">        HttpSession session = request.getSession();</span><br><span class="line">        //获取session中的用户对象</span><br><span class="line">        String username = (String) session.getAttribute(&quot;username&quot;);</span><br><span class="line">        //判断session中的用户对象是否存在，存在放行，不存在跳转登录页面</span><br><span class="line">        if(username!=null)</span><br><span class="line">            return true;</span><br><span class="line">        request.setAttribute(&quot;msg&quot;,&quot;您还没有登录，请登录！&quot;);</span><br><span class="line">        request.getRequestDispatcher(&quot;/WEB-INF/jsp/login.jsp&quot;).forward(request,response);</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<pre><code>@Override
-public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception &#123;
- 
-&#125;
- 
-@Override
-public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception &#123;
- 
-&#125;
-&#125;
-</code></pre>
-<p>3)前端测试登录页面login.jsp</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page contentType=&quot;text/html;charset=UTF-8&quot; language=&quot;java&quot; %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;%@include file=&quot;/common/head.jsp&quot;%&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br></pre></td></tr></table></figure>
-
-
-
+                <p>在项目中难免会使用到redis作为缓存，去减轻数据库的访问压力，但是涉及到数据更新时，如果redis和数据库的操作设计出现问题，就会导致redis缓存中和数据库中的数据不一致的情况。那么我们如何去保证缓存与数据库中数据一直呢？</p>
+<p>四种同步策略<br>想要保证缓存与数据库的双写一致，一共有四种方式，即四种同步策略<br>1、先更新缓存，再更新数据库<br>2、先更新数据库，再更新缓存<br>3、先删除缓存，在更新数据库<br>4、先更新数据库，再删除缓存</p>
+<h1 id="更新缓存和删除缓存的选择"><a href="#更新缓存和删除缓存的选择" class="headerlink" title="更新缓存和删除缓存的选择"></a>更新缓存和删除缓存的选择</h1><p><strong>更新缓存</strong></p>
+<p>优点：<br>如果每次数据变化都能被及时更新，那么查询数据时不容易出现不命中的情况，<br>缺点：<br>1、如果数据的计算复杂，频繁的更新会造成服务器性能的消耗比较大<br>2、如果数据并不是被频繁使用，那么频繁更新也只是浪费服务器性能，对业务没有多大的帮助<br>适用于数据使用较为频繁，且数据的计算不那么复杂的场景</p>
+<p><strong>删除缓存</strong></p>
+<p>优点：不需要顾忌数据的复杂性，直接删除即可<br>缺点：查询数据时，增大未命中的几率，从而增大数据库的访问压力<br>适用于数据使用频率不高的场景</p>
+<p>在上面四种同步策略中，都存在导致数据不一致的风险</p>
+<h1 id="1、先删除缓存，再更新数据库"><a href="#1、先删除缓存，再更新数据库" class="headerlink" title="1、先删除缓存，再更新数据库"></a>1、先删除缓存，再更新数据库</h1><p><img src="/2022/09/17/Redis%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E6%95%B0%E6%8D%AE%E4%B8%80%E8%87%B4%E6%80%A7/MyBlogs\source_posts\Redis如何保证数据一致性\1663382666822.png" alt="1663382666822"></p>
+<p>操作步骤：<br>a、线程A删除缓存中的数据，<br>b、线程A更新数据库中的数据，但是更新失败<br>c、此时线程B去获取缓存中的数据，但是未命中<br>d、线程B，去数据库中获取数据，但此时的数据因为更新失败为旧数据<br>e、线程B将数据库中查到的数据同步到缓存中去<br>f、线程A此时更新数据到数据库成功<br>最后数据库和redis缓存中的数据不一致</p>
+<p><strong>如果在更新数据库时没有出现失败，也同样存在会造成数据不一致的情况</strong></p>
+<p><img src="/2022/09/17/Redis%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E6%95%B0%E6%8D%AE%E4%B8%80%E8%87%B4%E6%80%A7/MyBlogs\source_posts\Redis如何保证数据一致性\1663383214079.png" alt="1663383214079"></p>
+<p>操作步骤：<br>a、线程A删除缓存中的数据，<br>b、此时线程B去获取缓存中的数据，但是未命中<br>c、线程B，去数据库中获取数据，但此时的数据因为更新失败为旧数据<br>d、线程B将数据库中查到的数据同步到缓存中去<br>e、线程A此时更新数据到数据库成功<br>最后数据库和redis缓存中的数据不一致,这里造成的数据不一致的原因是线程B在数据库还未更新时就已经获取到了旧的数据。</p>
+<h1 id="2、先更新数据库，再删除缓存"><a href="#2、先更新数据库，再删除缓存" class="headerlink" title="2、先更新数据库，再删除缓存"></a>2、先更新数据库，再删除缓存</h1><p><img src="/2022/09/17/Redis%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E6%95%B0%E6%8D%AE%E4%B8%80%E8%87%B4%E6%80%A7/MyBlogs\source_posts\Redis如何保证数据一致性\1663383237401.png" alt="1663383237401"></p>
+<p>操作步骤：<br>1、线程A更新数据库中的数据<br>2、线程A删除缓存中的数据，删除失败<br>3、线程B查询缓存中的数据，查询到旧数据<br>4、线程A异步重试删除缓存<br>这里，删除缓存中数据失败后就会造成线程B获取到缓存中的旧数据，从而导致数据不一致的情况</p>
+<p>如果缓存没有删除失败的情况也可能导致数据不一致</p>
+<p><img src="/2022/09/17/Redis%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E6%95%B0%E6%8D%AE%E4%B8%80%E8%87%B4%E6%80%A7/MyBlogs\source_posts\Redis如何保证数据一致性\1663383253681.png" alt="1663383253681"></p>
+<p>操作步骤：<br>1、线程A更新数据库中的数据<br>2、线程B查询缓存中的数据，查询到旧数据<br>3、线程A删除缓存<br>如果线程B在缓存删除前获取到了缓存中的数据，那么线程B获取到的还是旧数据，也会导致数据不一致的情况</p>
+<h1 id="延时双删"><a href="#延时双删" class="headerlink" title="延时双删"></a>延时双删</h1><p>上面中先删除缓存，在更新数据库在不出现失败时也会出现数据不一致的情况，那么我们要有什么解决方案呢。我们就采用延时双删的策略来保证缓存中的数据时更新后的数据<br>操作步骤<br>1、先删除缓存<br>2、更新数据库<br>3、线程等待 N秒（等待时间根据具体业务来判断）<br>4、再删除缓存<br>这样就保证了缓存中的数据最终会和数据库中的数据保持一致</p>
+<h1 id="数据库读写分离"><a href="#数据库读写分离" class="headerlink" title="数据库读写分离"></a>数据库读写分离</h1><p>先删除缓存，在更新数据库，如果数据库采用读写分离架构会有什么影响呢？</p>
+<p><img src="/2022/09/17/Redis%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E6%95%B0%E6%8D%AE%E4%B8%80%E8%87%B4%E6%80%A7/MyBlogs\source_posts\Redis如何保证数据一致性\1663383309293.png" alt="1663383309293"></p>
+<p>操作步骤：<br>1、线程A删除缓存<br>2、线程A更新从数据库<br>3、线程B查询缓存，未命中<br>4、线程B去从数据库查询数据，还未同步，所以从数据库为旧数据<br>5、线程B将数据更新到缓存中<br>6、主数据库同步数据到从数据中<br>这样还是会出现数据不一致的情况，那么我们要怎么解决呢？<br>如果只是为了更新redis的数据的数据库查询，让线程同步数据时强行指定到主数据库执行</p>
+<p><strong>如何保证缓存与数据库的双写一致性？</strong></p>
+<p>最经典的缓存+数据库读写的模式。</p>
+<p>读的时候，先读缓存，缓存没有的话，就读数据库，然后取出数据后放入缓存，同时返回响应。<br>更新的时候，先删除缓存，再更新数据库。<br>为什么是删除缓存而不是更新缓存？</p>
+<p>举个例子，比如说我一条数据，1分钟内修改了10次，那么缓存更新 10 次；但是这个缓存在 1 分钟内可能只被读取了 1 次，那每次更新的意义就不大，还会增加开销。如果你只是删除缓存的话，那么在 1 分钟内，这个缓存不过就重新计算一次而已，开销大幅度降低。用到缓存才去算缓存。</p>
+<p>为什么先删除缓存再更新数据库，而不是先更新数据库再删除缓存？</p>
+<p>先更新数据库，成功了再删除缓存。如果删除缓存失败了，那么会导致数据库中是新数据，缓存中是旧数据，数据就出现了不一致。</p>
+<p>先删除缓存，成功了再更新数据库。如果数据库更新失败了，那么数据库中是旧数据，缓存中是空的，那么数据不会不一致。因为读的时候缓存没有，所以去读了数据库中的旧数据，然后更新到缓存中还是旧数据，数据还是一致的，所以没问题</p>
+<p><strong>比较复杂的数据不一致问题分析</strong><br>比如：数据发生了变更，先删除了缓存，然后要去修改数据库，此时还没修改。一个请求过来，去读缓存，发现缓存空了，去查询数据库，查到了修改前的旧数据，放到了缓存中。随后数据变更的程序完成了数据库的修改。完了，数据库和缓存中的数据不一样了</p>
+<p>解决方案：加锁，比如redisson分布式锁，缺点：串行变成并行，效率更低了</p>
+<p> 优化方案：</p>
+<p><strong>一： 对于读多写少的场景：</strong></p>
+<p>​    了解下分布式读写锁，读锁和读锁之间可以并行，不互斥，所以不影响读的效率； 对同一个产品加写锁时，读锁就要等待， 以下，读锁，多个线程进来时，相当于没有加锁，不影响。只有写锁生效时，读锁才会 等待</p>
+<p>  <strong>二： 对于读多写多的场景</strong></p>
+<p>​      对于这种情况，大多数互联网公司没那么多要求保证实时的。比如商品详情页面上的库存，有时候并不是真正的库存。要到下单的时候才会去数据库取库存。所以。这种情况。我们只需要库存设置为缓存的时候，设置个超时时间为1分钟就行。</p>
 
                 
             </div>
@@ -681,7 +529,7 @@ public void afterCompletion(HttpServletRequest request, HttpServletResponse resp
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://myoceanus.github.io/2022/08/24/SpringMVC%E6%8B%A6%E6%88%AA%E5%99%A8/">https://myoceanus.github.io/2022/08/24/SpringMVC%E6%8B%A6%E6%88%AA%E5%99%A8/</a>
+                    <a href="https://myoceanus.github.io/2022/09/17/Redis%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E6%95%B0%E6%8D%AE%E4%B8%80%E8%87%B4%E6%80%A7/">https://myoceanus.github.io/2022/09/17/Redis%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E6%95%B0%E6%8D%AE%E4%B8%80%E8%87%B4%E6%80%A7/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -719,8 +567,8 @@ public void afterCompletion(HttpServletRequest request, HttpServletResponse resp
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/SpringMVC/">
-                                    <span class="chip bg-color">SpringMVC</span>
+                                <a href="/tags/redis/">
+                                    <span class="chip bg-color">redis</span>
                                 </a>
                             
                         </div>
@@ -894,9 +742,56 @@ public void afterCompletion(HttpServletRequest request, HttpServletResponse resp
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2022/09/17/Redis%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E6%95%B0%E6%8D%AE%E4%B8%80%E8%87%B4%E6%80%A7/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="Redis如何保证数据一致性">
+                        
+                        <span class="card-title">Redis如何保证数据一致性</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-17
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Oceanus
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/redis/">
+                        <span class="chip bg-color">redis</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2022/09/17/kafka%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E6%95%B0%E6%8D%AE%E4%B8%8D%E4%B8%A2%E5%A4%B1/">
                     <div class="card-image">
@@ -914,9 +809,9 @@ public void afterCompletion(HttpServletRequest request, HttpServletResponse resp
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-17
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-17
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -930,51 +825,6 @@ public void afterCompletion(HttpServletRequest request, HttpServletResponse resp
                     
                     <a href="/tags/kafka/">
                         <span class="chip bg-color">kafka</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2022/08/21/Spring%E6%95%B4%E5%90%88Mybatis%E5%8E%9F%E7%90%86/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="Spring整合Mybatis原理">
-                        
-                        <span class="card-title">Spring整合Mybatis原理</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-21
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            Oceanus
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Spring/">
-                        <span class="chip bg-color">Spring</span>
                     </a>
                     
                 </div>
