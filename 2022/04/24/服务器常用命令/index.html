@@ -471,7 +471,7 @@
                 <h3 id="一般情况下，网站（PHP后端）突然无法打开可以尝试重启服务"><a href="#一般情况下，网站（PHP后端）突然无法打开可以尝试重启服务" class="headerlink" title="一般情况下，网站（PHP后端）突然无法打开可以尝试重启服务"></a>一般情况下，网站（PHP后端）突然无法打开可以尝试重启服务</h3><p>1.服务器重启命令：reboot<br>2.php-fpm重启命令：service php-fpm restart</p>
 <h3 id="使用nginx的服务器，有时候网站配置后，出现ngnix报错可以先检查下网站的Nginx配置文件是否出现错误"><a href="#使用nginx的服务器，有时候网站配置后，出现ngnix报错可以先检查下网站的Nginx配置文件是否出现错误" class="headerlink" title="使用nginx的服务器，有时候网站配置后，出现ngnix报错可以先检查下网站的Nginx配置文件是否出现错误"></a>使用nginx的服务器，有时候网站配置后，出现ngnix报错可以先检查下网站的Nginx配置文件是否出现错误</h3><p>1.检查nginx语法 : nginx -tc 目录&#x2F;配置文件.conf<br>例子：nginx -tc &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</p>
 <h3 id="文件解、压缩"><a href="#文件解、压缩" class="headerlink" title="文件解、压缩"></a>文件解、压缩</h3><p>1.压缩打包命令：tar -zcvf &#x2F;data&#x2F;wwwroot&#x2F;###.tar.gz 目标文件夹名<br>2.解压命令：tar -xzvf file.tar.gz<br>例子：<br>(将abc文件夹打包压缩为abc.tar.gz)：tar -zcvf &#x2F;data&#x2F;wwwroot&#x2F;abc.tar.gz abc<br>(将abc.tar.gz解压） tar -xzvf abc.tar.gz</p>
-<h3 id="服务器之间拷贝文件"><a href="#服务器之间拷贝文件" class="headerlink" title="服务器之间拷贝文件"></a>服务器之间拷贝文件</h3><p>1.将文件拷贝到另一台服务器：<br>scp &#x2F;data&#x2F;wwwroot&#x2F;666.tar.gz <a href="mailto:&#x72;&#x6f;&#111;&#x74;&#x40;&#x31;&#49;&#49;&#x2e;&#49;&#x31;&#x2e;&#x31;&#49;&#x2e;&#x31;&#x31;&#49;">&#x72;&#x6f;&#111;&#x74;&#x40;&#x31;&#49;&#49;&#x2e;&#49;&#x31;&#x2e;&#x31;&#49;&#x2e;&#x31;&#x31;&#49;</a>:&#x2F;data&#x2F;wwwroot&#x2F;<br>2.从另一台服务器拷贝文件：<br>scp <a href="mailto:&#x72;&#111;&#111;&#116;&#x40;&#x32;&#x32;&#50;&#46;&#50;&#x32;&#x2e;&#x32;&#x32;&#46;&#50;&#50;&#x32;">&#x72;&#111;&#111;&#116;&#x40;&#x32;&#x32;&#50;&#46;&#50;&#x32;&#x2e;&#x32;&#x32;&#46;&#50;&#50;&#x32;</a>:&#x2F;data&#x2F;wwwroot&#x2F;weixin.tar.gz &#x2F;data&#x2F;wwwroot</p>
+<h3 id="服务器之间拷贝文件"><a href="#服务器之间拷贝文件" class="headerlink" title="服务器之间拷贝文件"></a>服务器之间拷贝文件</h3><p>1.将文件拷贝到另一台服务器：<br>scp &#x2F;data&#x2F;wwwroot&#x2F;666.tar.gz <a href="mailto:&#114;&#x6f;&#x6f;&#x74;&#64;&#x31;&#x31;&#49;&#46;&#x31;&#49;&#46;&#x31;&#49;&#46;&#49;&#x31;&#49;">&#114;&#x6f;&#x6f;&#x74;&#64;&#x31;&#x31;&#49;&#46;&#x31;&#49;&#46;&#x31;&#49;&#46;&#49;&#x31;&#49;</a>:&#x2F;data&#x2F;wwwroot&#x2F;<br>2.从另一台服务器拷贝文件：<br>scp <a href="mailto:&#114;&#111;&#x6f;&#116;&#x40;&#50;&#50;&#x32;&#x2e;&#50;&#x32;&#x2e;&#50;&#x32;&#46;&#x32;&#x32;&#x32;">&#114;&#111;&#x6f;&#116;&#x40;&#50;&#50;&#x32;&#x2e;&#50;&#x32;&#x2e;&#50;&#x32;&#46;&#x32;&#x32;&#x32;</a>:&#x2F;data&#x2F;wwwroot&#x2F;weixin.tar.gz &#x2F;data&#x2F;wwwroot</p>
 <h3 id="数据库导出（mysqldump命令）"><a href="#数据库导出（mysqldump命令）" class="headerlink" title="数据库导出（mysqldump命令）"></a>数据库导出（mysqldump命令）</h3><h4 id="导出整个数据库"><a href="#导出整个数据库" class="headerlink" title="导出整个数据库"></a>导出整个数据库</h4><p>mysqldump -u 用户名 -p 数据库名 &gt; 导出的文件名<br>mysqldump -u linuxde -p data &gt; 目录&#x2F;linuxde.sql</p>
 <h4 id="导出一个表"><a href="#导出一个表" class="headerlink" title="导出一个表"></a>导出一个表</h4><p>mysqldump -u 用户名 -p 数据库名 表名 &gt; 导出的文件名<br>mysqldump -u linuxde -p data users &gt; linuxde_users.sql</p>
 <p>基本命令格（[xxx]中的内容根据实际情况改动）</p>
@@ -1034,7 +1034,7 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2019-2022</span>
+                <span id="year">2019-2023</span>
             
             <a href="/about" target="_blank">Oceanus</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
